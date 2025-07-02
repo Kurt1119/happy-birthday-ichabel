@@ -189,24 +189,24 @@ body {
 .balloon {
   position: fixed;
   bottom: -100px;
-  width: 40px;
-  height: 55px;
+  width: 60px;
+  height: 85px;
   background-color: red;
   border-radius: 60% 60% 50% 50% / 70% 70% 30% 30%;
   animation: floatUp 8s ease-in-out forwards;
   z-index: 9998;
-  opacity: 0.8;
-  box-shadow: inset -3px -6px rgba(255, 255, 255, 0.3);
+  opacity: 0.9;
+  box-shadow: inset -4px -8px rgba(255, 255, 255, 0.3);
 }
 
 .balloon::before {
   content: '';
   position: absolute;
-  bottom: -6px;
+  bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 6px;
-  height: 8px;
+  width: 8px;
+  height: 10px;
   background-color: inherit;
   border-radius: 2px;
 }
@@ -214,34 +214,36 @@ body {
 .balloon::after {
   content: '';
   position: absolute;
-  bottom: -20px;
+  bottom: -25px;
   left: 50%;
   transform: translateX(-50%);
-  width: 1px;
-  height: 20px;
+  width: 1.5px;
+  height: 25px;
   background-color: rgba(0, 0, 0, 0.2); /* string */
 }
 
 @keyframes floatUp {
   0% {
     transform: translateY(0) scale(1);
-    opacity: 0.8;
+    opacity: 0.9;
   }
   100% {
-    transform: translateY(-130vh) scale(1.05);
+    transform: translateY(-130vh) scale(1.1);
     opacity: 0;
   }
 }
 
+/* Responsive: scale down for small screens */
 @media (max-width: 600px) {
   .balloon {
-    width: 30px;
-    height: 42px;
+    width: 45px;
+    height: 65px;
   }
 
   .balloon::after {
-    height: 16px;
+    height: 18px;
   }
 }
+
 
 
