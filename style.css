@@ -186,67 +186,61 @@ body {
     box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5);
   }
 }
-.balloon {
-  position: fixed;
-  bottom: -150px;
-  width: 90px;
-  height: 130px;
-  background-color: red;
-  border-radius: 60% 60% 50% 50% / 70% 70% 30% 30%;
-  animation: floatUp 9s ease-in-out forwards;
-  z-index: 9998;
-  opacity: 0.95;
-  box-shadow: inset -6px -10px rgba(255, 255, 255, 0.3);
-}
-
-.balloon::before {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 12px;
-  height: 14px;
-  background-color: inherit;
-  border-radius: 3px;
-}
-
-.balloon::after {
-  content: '';
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 40px;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-160vh) scale(1.2);
-    opacity: 0;
-  }
-}
-
-/* 📱 Mobile override: bigger balloons */
-@media (max-width: 600px) {
+<style>
   .balloon {
-    width: 120px;
-    height: 160px;
+    position: fixed;
+    bottom: -150px;
+    width: 90px;
+    height: 130px;
+    background-color: red;
+    border-radius: 60% 60% 50% 50% / 70% 70% 30% 30%;
+    animation: floatUp 10s ease-in-out forwards;
+    z-index: 9998;
+    opacity: 0.95;
+    box-shadow: inset -6px -10px rgba(255, 255, 255, 0.3);
+  }
+
+  .balloon::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 14px;
+    background-color: inherit;
+    border-radius: 3px;
   }
 
   .balloon::after {
-    height: 50px;
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.2);
   }
-}
 
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) translateX(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-160vh) translateX(var(--drift)) scale(1.2);
+      opacity: 0;
+    }
+  }
 
-
-
-
-
+  @media (max-width: 600px) {
+    .balloon {
+      width: 110px;
+      height: 150px;
+    }
+    .balloon::after {
+      height: 50px;
+    }
+  }
+</style>
