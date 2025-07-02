@@ -82,6 +82,5 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   } else {
     console.log("getUserMedia not supported on your browser!");
-  } // ... your microphone setup code ends here
- // End of DOMContentLoaded
+  } 
 });
