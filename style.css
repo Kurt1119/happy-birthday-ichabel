@@ -124,6 +124,7 @@ body {
 }
 
 .candle {
+  position: absolute;
   background-color: #7B020B;
   width: 12px;
   height: 35px;
