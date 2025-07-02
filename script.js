@@ -83,4 +83,16 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.log("getUserMedia not supported on your browser!");
   }
+  // Automatically place 18 candles on the cake
+const numberOfCandles = 18;
+
+for (let i = 0; i < numberOfCandles; i++) {
+  const cakeWidth = 240; // Adjust this based on your cake size
+  const spacing = cakeWidth / (numberOfCandles + 1);
+  const left = spacing * (i + 1);
+  const top = 80; // Keep this fixed for neat horizontal alignment
+
+  addCandle(left, top);
+}
+
 });
