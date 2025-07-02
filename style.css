@@ -188,9 +188,9 @@ body {
 }
 .balloon {
   position: fixed;
-  bottom: -120px;
-  width: 80px;
-  height: 110px;
+  bottom: -150px;
+  width: 90px;
+  height: 130px;
   background-color: red;
   border-radius: 60% 60% 50% 50% / 70% 70% 30% 30%;
   animation: floatUp 9s ease-in-out forwards;
@@ -205,8 +205,8 @@ body {
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 10px;
-  height: 12px;
+  width: 12px;
+  height: 14px;
   background-color: inherit;
   border-radius: 3px;
 }
@@ -214,11 +214,11 @@ body {
 .balloon::after {
   content: '';
   position: absolute;
-  bottom: -35px;
+  bottom: -40px;
   left: 50%;
   transform: translateX(-50%);
   width: 2px;
-  height: 35px;
+  height: 40px;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -228,21 +228,23 @@ body {
     opacity: 1;
   }
   100% {
-    transform: translateY(-150vh) scale(1.15);
+    transform: translateY(-160vh) scale(1.2);
     opacity: 0;
   }
 }
 
+/* 📱 Mobile override: bigger balloons */
 @media (max-width: 600px) {
   .balloon {
-    width: 60px;
-    height: 85px;
+    width: 120px;
+    height: 160px;
   }
 
   .balloon::after {
-    height: 28px;
+    height: 50px;
   }
 }
+
 
 
 
