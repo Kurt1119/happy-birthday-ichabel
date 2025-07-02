@@ -96,8 +96,5 @@ document.addEventListener("DOMContentLoaded", function () {
     const left = cakeLeftEdge + i * spacing;
     addCandle(left, top);
   }
-
-}); // End of DOMContentLoaded
-
-
+ // End of DOMContentLoaded
 });
