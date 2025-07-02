@@ -82,19 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   } else {
     console.log("getUserMedia not supported on your browser!");
-  }
-    // ... your microphone setup code ends here
-
-  // Place candles
-  const numberOfCandles = 18;
-  const cakeLeftEdge = 60;
-  const cakeWidth = 180;
-  const top = 100;
-
-  for (let i = 0; i < numberOfCandles; i++) {
-    const spacing = cakeWidth / (numberOfCandles - 1);
-    const left = cakeLeftEdge + i * spacing;
-    addCandle(left, top);
-  }
+  } // ... your microphone setup code ends here
  // End of DOMContentLoaded
 });
