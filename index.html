@@ -17,7 +17,7 @@
         background-color: red;
         border-radius: 50% 50% 45% 45%;
         opacity: 0.9;
-        animation: floatUp 8s ease-in-out forwards;
+        animation: floatUp 7s ease-in-out forwards;
         z-index: 9998;
       }
 
@@ -33,6 +33,14 @@
         100% {
           transform: translateX(20px) translateY(-110vh);
           opacity: 0;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .balloon {
+          width: 20px;
+          height: 30px;
+          animation-duration: 9s;
         }
       }
     </style>
@@ -107,7 +115,7 @@
 
       function releaseBalloons(count = 20) {
         for (let i = 0; i < count; i++) {
-          setTimeout(() => createBalloon(), i * 400);
+          setTimeout(() => createBalloon(), i * 300);
         }
       }
 
@@ -119,10 +127,11 @@
         balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
         balloon.style.left = Math.random() * 90 + 'vw';
+        balloon.style.animationDelay = (Math.random() * 2) + 's';
 
         document.body.appendChild(balloon);
 
-        setTimeout(() => balloon.remove(), 8000);
+        setTimeout(() => balloon.remove(), 9000);
       }
     </script>
 
