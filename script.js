@@ -83,16 +83,21 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.log("getUserMedia not supported on your browser!");
   }
-  // Automatically place 18 candles on the cake
-const numberOfCandles = 18;
+    // ... your microphone setup code ends here
 
-for (let i = 0; i < numberOfCandles; i++) {
-  const cakeWidth = 240; // Adjust this based on your cake size
-  const spacing = cakeWidth / (numberOfCandles + 1);
-  const left = spacing * (i + 1);
-  const top = 80; // Keep this fixed for neat horizontal alignment
+  // Place candles
+  const numberOfCandles = 18;
+  const cakeLeftEdge = 60;
+  const cakeWidth = 180;
+  const top = 100;
 
-  addCandle(left, top);
-}
+  for (let i = 0; i < numberOfCandles; i++) {
+    const spacing = cakeWidth / (numberOfCandles - 1);
+    const left = cakeLeftEdge + i * spacing;
+    addCandle(left, top);
+  }
+
+}); // End of DOMContentLoaded
+
 
 });
