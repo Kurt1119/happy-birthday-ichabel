@@ -57,9 +57,35 @@
     const audio = document.getElementById("birthdaySong");
     audio.play();
     document.getElementById("playButton").style.display = "none";
-  }
-</script>
-<script src="script.js"></script>
 
+    confetti({
+          particleCount: 150,
+          spread: 100,
+          origin: { y: 0.6 }
+        });
+
+        const duration = 3000;
+        const end = Date.now() + duration;
+
+        const interval = setInterval(() => {
+          if (Date.now() > end) {
+            clearInterval(interval);
+            return;
+          }
+
+          confetti({
+            particleCount: 20,
+            startVelocity: 30,
+            spread: 360,
+            origin: {
+              x: Math.random(),
+              y: Math.random() * 0.5
+            }
+          });
+        }, 250);
+      }
+    </script>
+
+    <script src="script.js"></script>
   </body>
 </html>
