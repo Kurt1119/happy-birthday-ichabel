@@ -4,12 +4,10 @@
     <meta charset="UTF-8" />
     <title>Candle Blow</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   </head>
   <body>
     <h1 style="text-align:center; color:#ff69b4; font-family:'Baloo 2', cursive;">
@@ -52,45 +50,50 @@
       ▶ Play Music
     </button>
 
-    <!-- ✅ Load Confetti Library BEFORE you call confetti() -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-    <!-- Your playMusic + confetti code -->
     <script>
       function playMusic() {
         const audio = document.getElementById("birthdaySong");
         audio.play();
         document.getElementById("playButton").style.display = "none";
 
-        confetti({
-          particleCount: 150,
-          spread: 100,
-          origin: { y: 0.6 }
-        });
-
+        // Confetti
+        confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
         const duration = 3000;
         const end = Date.now() + duration;
-
         const interval = setInterval(() => {
           if (Date.now() > end) {
             clearInterval(interval);
             return;
           }
-
           confetti({
             particleCount: 20,
             startVelocity: 30,
             spread: 360,
-            origin: {
-              x: Math.random(),
-              y: Math.random() * 0.5
-            }
+            origin: { x: Math.random(), y: Math.random() * 0.5 }
           });
         }, 250);
+
+        // Balloons
+        releaseBalloons();
+      }
+
+      function releaseBalloons() {
+        for (let i = 0; i < 10; i++) {
+          const balloon = document.createElement('div');
+          balloon.className = 'balloon';
+          balloon.style.left = Math.random() * 100 + 'vw';
+          balloon.style.backgroundColor = getRandomColor();
+          document.body.appendChild(balloon);
+          setTimeout(() => balloon.remove(), 7000);
+        }
+      }
+
+      function getRandomColor() {
+        const colors = ['#ff4d4d', '#66ccff', '#99ff99', '#ffff66', '#ff99ff'];
+        return colors[Math.floor(Math.random() * colors.length)];
       }
     </script>
 
-    <!-- Your cake & candle interaction script -->
     <script src="script.js"></script>
   </body>
 </html>
