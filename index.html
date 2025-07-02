@@ -11,13 +11,15 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
   </head>
-    <body>
- <h1 style="text-align:center; color:#ff69b4; font-family:'Baloo 2', cursive;">
-  Happy Birthday, Doc 🎂
-</h1>
+  <body>
+    <h1 style="text-align:center; color:#ff69b4; font-family:'Baloo 2', cursive;">
+      Happy Birthday, Doc 🎂
+    </h1>
+
     <div class="candle-count-display">
       Candles on the Cake: <span id="candleCount">0</span>
     </div>
+
     <div class="cake">
       <div class="plate"></div>
       <div class="layer layer-bottom"></div>
@@ -28,37 +30,39 @@
       <div class="drip drip2"></div>
       <div class="drip drip3"></div>
     </div>
-   <audio id="birthdaySong" loop>
-  <source src="happy-birthday.mp3" type="audio/mpeg" />
 
-</audio>
+    <audio id="birthdaySong" loop>
+      <source src="happy-birthday.mp3" type="audio/mpeg" />
+    </audio>
 
-<button id="playButton" onclick="playMusic()" style="
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  padding: 12px 24px;
-  font-size: 16px;
-  background-color: #ff69b4;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-">
-  ▶ Play Music
-</button>
+    <button id="playButton" onclick="playMusic()" style="
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    ">
+      ▶ Play Music
+    </button>
 
+    <!-- ✅ Load Confetti Library BEFORE you call confetti() -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
+    <!-- Your playMusic + confetti code -->
+    <script>
+      function playMusic() {
+        const audio = document.getElementById("birthdaySong");
+        audio.play();
+        document.getElementById("playButton").style.display = "none";
 
-<script>
-  function playMusic() {
-    const audio = document.getElementById("birthdaySong");
-    audio.play();
-    document.getElementById("playButton").style.display = "none";
-
-    confetti({
+        confetti({
           particleCount: 150,
           spread: 100,
           origin: { y: 0.6 }
@@ -86,6 +90,7 @@
       }
     </script>
 
+    <!-- Your cake & candle interaction script -->
     <script src="script.js"></script>
   </body>
 </html>
