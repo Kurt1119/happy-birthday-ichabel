@@ -188,7 +188,7 @@ body {
 }
 .balloon {
   position: fixed;
-  bottom: -80px;
+  bottom: -100px;
   width: 60px;
   height: 80px;
   background: radial-gradient(circle at 30% 30%, #fff 5%, red 60%);
@@ -206,7 +206,7 @@ body {
   left: 50%;
   width: 10px;
   height: 10px;
-  background: red;
+  background: currentColor;
   transform: translateX(-50%) rotate(45deg);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
@@ -232,4 +232,5 @@ body {
     opacity: 0;
   }
 }
+
 
