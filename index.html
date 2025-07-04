@@ -4,81 +4,66 @@
     <meta charset="UTF-8" />
     <title>Candle Blow</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
     <style>
       .balloon {
         position: fixed;
         bottom: -150px;
-        width: 90px;
-        height: 130px;
+        width: 60px;
+        height: 80px;
         background-color: red;
-        border-radius: 60% 60% 50% 50% / 70% 70% 30% 30%;
-        animation: floatUp 10s ease-in-out forwards;
-        z-index: 9998;
-        opacity: 0.95;
-        box-shadow: inset -6px -10px rgba(255, 255, 255, 0.3);
-      }
-
-      .balloon::before {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 12px;
-        height: 14px;
-        background-color: inherit;
-        border-radius: 3px;
+        border-radius: 60% 60% 60% 60%;
+        animation: floatUp 7s linear forwards;
+        z-index: 1;
+        opacity: 0.9;
       }
 
       .balloon::after {
-        content: '';
+        content: "";
         position: absolute;
-        bottom: -40px;
+        bottom: -10px;
         left: 50%;
-        transform: translateX(-50%);
         width: 2px;
-        height: 40px;
-        background-color: rgba(0, 0, 0, 0.2);
+        height: 20px;
+        background: #fff;
+        transform: translateX(-50%);
       }
 
       @keyframes floatUp {
         0% {
-          transform: translateY(0) translateX(0) scale(1);
-          opacity: 1;
+          transform: translateY(0) scale(1);
+          opacity: 0.9;
         }
         100% {
-          transform: translateY(-160vh) translateX(var(--drift)) scale(1.2);
+          transform: translateY(-120vh) scale(1.05);
           opacity: 0;
         }
       }
 
       @media (max-width: 600px) {
         .balloon {
-          width: 110px;
-          height: 150px;
-        }
-        .balloon::after {
-          height: 50px;
+          width: 50px;
+          height: 70px;
         }
       }
     </style>
   </head>
-
   <body>
     <h1 style="text-align:center; color:#ff69b4; font-family:'Baloo 2', cursive;">
       Happy Birthday, Doc 🎂
     </h1>
 
     <div class="candle-count-display">
-      Candles on the Cake: <span id="candleCount">0</span>
+      Candles on the Cake: <span id="candleCount">18</span>
     </div>
 
-    <div class="cake">
+    <div class="cake" id="cake">
       <div class="plate"></div>
       <div class="layer layer-bottom"></div>
       <div class="layer layer-middle"></div>
@@ -116,7 +101,6 @@
         audio.play();
         document.getElementById("playButton").style.display = "none";
 
-        // Confetti
         confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
         const duration = 3000;
         const end = Date.now() + duration;
@@ -133,40 +117,43 @@
           });
         }, 250);
 
-        // Balloons
         releaseBalloons();
       }
 
       function releaseBalloons() {
-        const numberOfBalloons = 18;
-        for (let i = 0; i < numberOfBalloons; i++) {
-          const balloon = document.createElement('div');
-          balloon.className = 'balloon';
-
-          // Random horizontal position
-          balloon.style.left = Math.random() * 90 + 'vw';
-
-          // Random color
+        for (let i = 0; i < 18; i++) {
+          const balloon = document.createElement("div");
+          balloon.className = "balloon";
+          balloon.style.left = Math.random() * 90 + "vw";
           balloon.style.backgroundColor = getRandomColor();
-
-          // Random scale
-          const scale = 0.9 + Math.random() * 0.5;
-          balloon.style.transform = `scale(${scale})`;
-
-          // Random drift
-          balloon.style.setProperty('--drift', `${Math.random() * 40 - 20}vw`);
-
-          // Random duration
-          balloon.style.animationDuration = 8 + Math.random() * 4 + 's';
-
           document.body.appendChild(balloon);
-          setTimeout(() => balloon.remove(), 12000);
+          setTimeout(() => balloon.remove(), 8000);
         }
       }
 
       function getRandomColor() {
-        const colors = ['#ff4d4d', '#66ccff', '#99ff99', '#ffff66', '#ff99ff', '#ffa07a', '#87cefa'];
+        const colors = ['#ff4d4d', '#66ccff', '#99ff99', '#ffff66', '#ff99ff', '#ffa500'];
         return colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      // Automatic candle placement
+      const cake = document.getElementById("cake");
+      for (let i = 0; i < 18; i++) {
+        const candle = document.createElement("div");
+        candle.className = "candle";
+        const flame = document.createElement("div");
+        flame.className = "flame";
+        candle.appendChild(flame);
+
+        // Random placement on top layer
+        const x = Math.random() * 180 + 30; // between 30px and 210px
+        const y = Math.random() * 10 + 10;  // vertical range on top layer
+
+        candle.style.position = "absolute";
+        candle.style.left = `${x}px`;
+        candle.style.top = `${y}px`;
+
+        cake.appendChild(candle);
       }
     </script>
 
